@@ -1,4 +1,4 @@
-# @leapml/sdk
+# LeapML Typescript SDK
 
 <!-- Start SDK Installation -->
 ## SDK Installation
