@@ -1,5 +1,7 @@
 # LeapML Typescript SDK
 
+Generate images, edit them, fine tune models, and more with an easy-to-use API.
+
 <!-- Start SDK Installation -->
 ## SDK Installation
 
@@ -15,6 +17,10 @@ npm add @leapml/sdk
 yarn add @leapml/sdk
 ```
 <!-- End SDK Installation -->
+
+## Authentication
+
+Signup for [access](https://www.leapml.dev/signup) to LeapML to use the API. 
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
