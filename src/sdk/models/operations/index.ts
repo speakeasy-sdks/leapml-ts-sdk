@@ -9,6 +9,7 @@ export * from "./modelscontrollerfindall";
 export * from "./modelscontrollerfindone";
 export * from "./modelscontrollerqueue";
 export * from "./samplescontrollercreate";
+export * from "./samplescontrollercreateurl";
 export * from "./samplescontrollerfindall";
 export * from "./samplescontrollerfindone";
 export * from "./samplescontrollerremove";

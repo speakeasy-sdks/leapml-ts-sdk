@@ -62,6 +62,7 @@ sdk.fineTuning.modelsControllerCreate(req).then((res: ModelsControllerCreateResp
 * `modelsControllerFindOne` - Retrieve a Single Model
 * `modelsControllerQueue` - Queue Training Job
 * `samplesControllerCreate` - Upload Image Samples
+* `samplesControllerCreateUrl` - Upload Image Samples Via Url
 * `samplesControllerFindAll` - List Image Samples
 * `samplesControllerFindOne` - Get Image Sample
 * `samplesControllerRemove` - Archive Image Sample

@@ -7,4 +7,5 @@ export * from "./modelversionentity";
 export * from "./security";
 export * from "./trainingsampleentity";
 export * from "./trainmodeldto";
+export * from "./uploadsamplesviaurldto";
 export * from "./weightsentity";

@@ -280,6 +280,63 @@ export class FineTuning {
 
   
   /**
+   * samplesControllerCreateUrl - Upload Image Samples Via Url
+   *
+   * Upload one or multiple image sample to a model.
+  **/
+  samplesControllerCreateUrl(
+    req: operations.SamplesControllerCreateUrlRequest,
+    config?: AxiosRequestConfig
+  ): Promise<operations.SamplesControllerCreateUrlResponse> {
+    if (!(req instanceof utils.SpeakeasyBase)) {
+      req = new operations.SamplesControllerCreateUrlRequest(req);
+    }
+    
+    const baseURL: string = this._serverURL;
+    const url: string = utils.generateURL(baseURL, "/api/v1/images/models/{modelId}/samples/url", req.pathParams);
+
+    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+    try {
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new Error(`Error serializing request body, cause: ${e.message}`);
+      }
+    }
+    
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
+    
+    const headers = {...reqBodyHeaders, ...config?.headers};
+    if (reqBody == null || Object.keys(reqBody).length === 0) throw new Error("request body is required");
+    
+    const r = client.request({
+      url: url,
+      method: "post",
+      headers: headers,
+      data: reqBody, 
+      ...config,
+    });
+    
+    return r.then((httpRes: AxiosResponse) => {
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
+        const res: operations.SamplesControllerCreateUrlResponse = {statusCode: httpRes.status, contentType: contentType};
+        switch (true) {
+          case httpRes?.status == 200:
+            if (utils.matchContentType(contentType, `application/json`)) {
+                res.trainingSampleEntity = httpRes?.data;
+            }
+            break;
+        }
+
+        return res;
+      })
+  }
+
+  
+  /**
    * samplesControllerFindAll - List Image Samples
    *
    * Given a model ID, returns all image samples for that model.

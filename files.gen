@@ -9,6 +9,7 @@ src/sdk/models/operations/modelscontrollerfindall.ts
 src/sdk/models/operations/modelscontrollerfindone.ts
 src/sdk/models/operations/modelscontrollerqueue.ts
 src/sdk/models/operations/samplescontrollercreate.ts
+src/sdk/models/operations/samplescontrollercreateurl.ts
 src/sdk/models/operations/samplescontrollerfindall.ts
 src/sdk/models/operations/samplescontrollerfindone.ts
 src/sdk/models/operations/samplescontrollerremove.ts
@@ -27,6 +28,7 @@ src/sdk/models/shared/modelversionentity.ts
 src/sdk/models/shared/weightsentity.ts
 src/sdk/models/shared/trainmodeldto.ts
 src/sdk/models/shared/trainingsampleentity.ts
+src/sdk/models/shared/uploadsamplesviaurldto.ts
 src/sdk/models/shared/inferenceentity.ts
 src/sdk/models/shared/createinferencedto.ts
 src/sdk/models/shared/editentity.ts
