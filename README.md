@@ -78,7 +78,7 @@ sdk.fineTuning.modelsControllerCreate(req).then((res: ModelsControllerCreateResp
 
 ### imageEditing
 
-* `editControllerCreate` - Edit a photo
+* `editControllerCreate` - Edit an image
 * `editControllerFindOne` - Get an edit
 <!-- End SDK Available Operations -->
 

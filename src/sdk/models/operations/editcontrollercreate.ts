@@ -2,26 +2,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 
 
-export class EditControllerCreateRequestBodyBody extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=imageGuidanceScale" })
-  imageGuidanceScale?: number;
-
-  @SpeakeasyMetadata({ data: "json, name=prompt" })
-  prompt: string;
-
-  @SpeakeasyMetadata({ data: "json, name=seed" })
-  seed?: number;
-
-  @SpeakeasyMetadata({ data: "json, name=steps" })
-  steps?: number;
-
-  @SpeakeasyMetadata({ data: "json, name=textGuidanceScale" })
-  textGuidanceScale?: number;
-
-  @SpeakeasyMetadata({ data: "json, name=webhookUrl" })
-  webhookUrl?: string;
-}
-
 export class EditControllerCreateRequestBodyFiles extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "multipart_form, content=true" })
   content: Uint8Array;
@@ -31,11 +11,26 @@ export class EditControllerCreateRequestBodyFiles extends SpeakeasyBase {
 }
 
 export class EditControllerCreateRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "multipart_form, name=body;json=true" })
-  body: EditControllerCreateRequestBodyBody;
-
   @SpeakeasyMetadata({ data: "multipart_form, file=true" })
   files: EditControllerCreateRequestBodyFiles;
+
+  @SpeakeasyMetadata({ data: "multipart_form, name=imageGuidanceScale" })
+  imageGuidanceScale?: number;
+
+  @SpeakeasyMetadata({ data: "multipart_form, name=prompt" })
+  prompt: string;
+
+  @SpeakeasyMetadata({ data: "multipart_form, name=seed" })
+  seed?: number;
+
+  @SpeakeasyMetadata({ data: "multipart_form, name=steps" })
+  steps?: number;
+
+  @SpeakeasyMetadata({ data: "multipart_form, name=textGuidanceScale" })
+  textGuidanceScale?: number;
+
+  @SpeakeasyMetadata({ data: "multipart_form, name=webhookUrl" })
+  webhookUrl?: string;
 }
 
 export class EditControllerCreateSecurity extends SpeakeasyBase {

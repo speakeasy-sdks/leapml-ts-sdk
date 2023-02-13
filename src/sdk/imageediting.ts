@@ -20,9 +20,9 @@ export class ImageEditing {
   }
   
   /**
-   * editControllerCreate - Edit a photo
+   * editControllerCreate - Edit an image
    *
-   * Edit a photo using just a prompt
+   * Edit an image using just a prompt
   **/
   editControllerCreate(
     req: operations.EditControllerCreateRequest,
