@@ -2,25 +2,25 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 
 
-export class ModelsControllerFindOnePathParams extends SpeakeasyBase {
+export class RetrieveSingleModelPathParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=modelId" })
   modelId: string;
 }
 
-export class ModelsControllerFindOneSecurity extends SpeakeasyBase {
+export class RetrieveSingleModelSecurity extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "security, scheme=true;type=http;subtype=bearer" })
   bearer: shared.SchemeBearer;
 }
 
-export class ModelsControllerFindOneRequest extends SpeakeasyBase {
+export class RetrieveSingleModelRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
-  pathParams: ModelsControllerFindOnePathParams;
+  pathParams: RetrieveSingleModelPathParams;
 
   @SpeakeasyMetadata()
-  security: ModelsControllerFindOneSecurity;
+  security: RetrieveSingleModelSecurity;
 }
 
-export class ModelsControllerFindOneResponse extends SpeakeasyBase {
+export class RetrieveSingleModelResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
 

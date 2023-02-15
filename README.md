@@ -26,26 +26,30 @@ Signup for [access](https://www.leapml.dev/signup) to LeapML to use the API.
 <!-- Start SDK Example Usage -->
 ```typescript
 import { LeapMLAPI, withSecurity} from "@leapml/sdk";
-import { ModelsControllerCreateRequest, ModelsControllerCreateResponse } from "@leapml/sdk/src/sdk/models/operations";
+import { SamplesControllerCreateRequest, SamplesControllerCreateResponse } from "@leapml/sdk/src/sdk/models/operations";
 import { AxiosError } from "axios";
 
 
 const sdk = new LeapMLAPI();
     
-const req: ModelsControllerCreateRequest = {
+const req: SamplesControllerCreateRequest = {
   security: {
     bearer: {
       authorization: "Bearer YOUR_BEARER_TOKEN_HERE",
     },
   },
+  pathParams: {
+    modelId: "unde",
+  },
   request: {
-    subjectIdentifier: "unde",
-    subjectKeyword: "deserunt",
-    title: "porro",
+    files: {
+      content: "deserunt".encode(),
+      files: "porro",
+    },
   },
 };
 
-sdk.fineTuning.modelsControllerCreate(req).then((res: ModelsControllerCreateResponse | AxiosError) => {
+sdk.fineTuning.samplesControllerCreate(req).then((res: SamplesControllerCreateResponse | AxiosError) => {
    // handle response
 });
 ```
@@ -57,10 +61,6 @@ sdk.fineTuning.modelsControllerCreate(req).then((res: ModelsControllerCreateResp
 
 ### fineTuning
 
-* `modelsControllerCreate` - Create Model
-* `modelsControllerFindAll` - List All Models
-* `modelsControllerFindOne` - Retrieve a Single Model
-* `modelsControllerQueue` - Queue Training Job
 * `samplesControllerCreate` - Upload Image Samples
 * `samplesControllerCreateUrl` - Upload Image Samples Via Url
 * `samplesControllerFindAll` - List Image Samples
@@ -68,6 +68,10 @@ sdk.fineTuning.modelsControllerCreate(req).then((res: ModelsControllerCreateResp
 * `samplesControllerRemove` - Archive Image Sample
 * `versionsControllerFindAll` - List All Model Versions
 * `versionsControllerFindOne` - Get Model Version
+* `createModel` - Create Model
+* `listAllModels` - List All Models
+* `queueTrainingJob` - Queue Training Job
+* `retrieveSingleModel` - Retrieve a Single Model
 
 ### generatingImages
 

@@ -2,28 +2,28 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 
 
-export class ModelsControllerQueuePathParams extends SpeakeasyBase {
+export class QueueTrainingJobPathParams extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=modelId" })
   modelId: string;
 }
 
-export class ModelsControllerQueueSecurity extends SpeakeasyBase {
+export class QueueTrainingJobSecurity extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "security, scheme=true;type=http;subtype=bearer" })
   bearer: shared.SchemeBearer;
 }
 
-export class ModelsControllerQueueRequest extends SpeakeasyBase {
+export class QueueTrainingJobRequest extends SpeakeasyBase {
   @SpeakeasyMetadata()
-  pathParams: ModelsControllerQueuePathParams;
+  pathParams: QueueTrainingJobPathParams;
 
   @SpeakeasyMetadata({ data: "request, media_type=application/json" })
   request?: shared.TrainModelDto;
 
   @SpeakeasyMetadata()
-  security: ModelsControllerQueueSecurity;
+  security: QueueTrainingJobSecurity;
 }
 
-export class ModelsControllerQueueResponse extends SpeakeasyBase {
+export class QueueTrainingJobResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
 
