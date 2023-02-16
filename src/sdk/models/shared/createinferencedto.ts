@@ -17,6 +17,9 @@ export class CreateInferenceDto extends SpeakeasyBase {
   @SpeakeasyMetadata({ data: "json, name=promptStrength" })
   promptStrength?: number;
 
+  @SpeakeasyMetadata({ data: "json, name=restoreFaces" })
+  restoreFaces?: boolean;
+
   @SpeakeasyMetadata({ data: "json, name=seed" })
   seed?: number;
 
