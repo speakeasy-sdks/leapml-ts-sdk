@@ -1,6 +1,6 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
 
 export class GeneratingImages {
   _defaultClient: AxiosInstance;
@@ -94,11 +94,19 @@ export class GeneratingImages {
     
     const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
+    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
+
+    const requestConfig: AxiosRequestConfig = {
+      ...config,
+      params: req.queryParams,
+      paramsSerializer: qpSerializer,
+    };
+    
     
     const r = client.request({
       url: url,
       method: "get",
-      ...config,
+      ...requestConfig,
     });
     
     return r.then((httpRes: AxiosResponse) => {

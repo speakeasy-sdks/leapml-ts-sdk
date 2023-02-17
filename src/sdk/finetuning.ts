@@ -1,6 +1,6 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
 
 export class FineTuning {
   _defaultClient: AxiosInstance;
@@ -105,6 +105,14 @@ export class FineTuning {
     const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
+    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
+
+    const requestConfig: AxiosRequestConfig = {
+      ...config,
+      params: req.queryParams,
+      paramsSerializer: qpSerializer,
+    };
+    
     if (reqBody == null || Object.keys(reqBody).length === 0) throw new Error("request body is required");
     
     const r = client.request({
@@ -112,7 +120,7 @@ export class FineTuning {
       method: "post",
       headers: headers,
       data: reqBody, 
-      ...config,
+      ...requestConfig,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -423,11 +431,19 @@ export class FineTuning {
     
     const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
+    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
+
+    const requestConfig: AxiosRequestConfig = {
+      ...config,
+      params: req.queryParams,
+      paramsSerializer: qpSerializer,
+    };
+    
     
     const r = client.request({
       url: url,
       method: "get",
-      ...config,
+      ...requestConfig,
     });
     
     return r.then((httpRes: AxiosResponse) => {
