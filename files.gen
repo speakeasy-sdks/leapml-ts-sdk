@@ -4,6 +4,7 @@ src/sdk/imageediting.ts
 src/sdk/sdk.ts
 package-lock.json
 package.json
+src/sdk/models/operations/modelscontrollerremove.ts
 src/sdk/models/operations/samplescontrollercreate.ts
 src/sdk/models/operations/samplescontrollercreateurl.ts
 src/sdk/models/operations/samplescontrollerfindall.ts
@@ -20,6 +21,7 @@ src/sdk/models/operations/inferencescontrollerfindall.ts
 src/sdk/models/operations/inferencescontrollerfindone.ts
 src/sdk/models/operations/inferencescontrollerremove.ts
 src/sdk/models/operations/editcontrollercreate.ts
+src/sdk/models/operations/editcontrollercreatewithurl.ts
 src/sdk/models/operations/editcontrollerfindone.ts
 src/sdk/models/operations/index.ts
 src/sdk/models/shared/trainingsampleentity.ts

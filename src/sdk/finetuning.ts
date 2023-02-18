@@ -20,6 +20,44 @@ export class FineTuning {
   }
   
   /**
+   * modelsControllerRemove - Delete a Model
+  **/
+  modelsControllerRemove(
+    req: operations.ModelsControllerRemoveRequest,
+    config?: AxiosRequestConfig
+  ): Promise<operations.ModelsControllerRemoveResponse> {
+    if (!(req instanceof utils.SpeakeasyBase)) {
+      req = new operations.ModelsControllerRemoveRequest(req);
+    }
+    
+    const baseURL: string = this._serverURL;
+    const url: string = utils.generateURL(baseURL, "/api/v1/images/models/{modelId}", req.pathParams);
+    
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
+    
+    
+    const r = client.request({
+      url: url,
+      method: "delete",
+      ...config,
+    });
+    
+    return r.then((httpRes: AxiosResponse) => {
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
+        const res: operations.ModelsControllerRemoveResponse = {statusCode: httpRes.status, contentType: contentType};
+        switch (true) {
+          case httpRes?.status == 200:
+            break;
+        }
+
+        return res;
+      })
+  }
+
+  
+  /**
    * samplesControllerCreate - Upload Image Samples
    *
    * Upload one or multiple image sample to a model.

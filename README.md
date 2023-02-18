@@ -26,13 +26,13 @@ Signup for [access](https://www.leapml.dev/signup) to LeapML to use the API.
 <!-- Start SDK Example Usage -->
 ```typescript
 import { LeapMLAPI, withSecurity} from "@leapml/sdk";
-import { SamplesControllerCreateRequest, SamplesControllerCreateResponse } from "@leapml/sdk/src/sdk/models/operations";
+import { ModelsControllerRemoveRequest, ModelsControllerRemoveResponse } from "@leapml/sdk/src/sdk/models/operations";
 import { AxiosError } from "axios";
 
 
 const sdk = new LeapMLAPI();
     
-const req: SamplesControllerCreateRequest = {
+const req: ModelsControllerRemoveRequest = {
   security: {
     bearer: {
       authorization: "Bearer YOUR_BEARER_TOKEN_HERE",
@@ -41,15 +41,9 @@ const req: SamplesControllerCreateRequest = {
   pathParams: {
     modelId: "unde",
   },
-  request: {
-    files: {
-      content: "deserunt".encode(),
-      files: "porro",
-    },
-  },
 };
 
-sdk.fineTuning.samplesControllerCreate(req).then((res: SamplesControllerCreateResponse | AxiosError) => {
+sdk.fineTuning.modelsControllerRemove(req).then((res: ModelsControllerRemoveResponse | AxiosError) => {
    // handle response
 });
 ```
@@ -61,6 +55,7 @@ sdk.fineTuning.samplesControllerCreate(req).then((res: SamplesControllerCreateRe
 
 ### fineTuning
 
+* `modelsControllerRemove` - Delete a Model
 * `samplesControllerCreate` - Upload Image Samples
 * `samplesControllerCreateUrl` - Upload Image Samples Via Url
 * `samplesControllerFindAll` - List Image Samples
@@ -83,6 +78,7 @@ sdk.fineTuning.samplesControllerCreate(req).then((res: SamplesControllerCreateRe
 ### imageEditing
 
 * `editControllerCreate` - Edit an image
+* `editControllerCreateWithUrl` - Edit an image from URL
 * `editControllerFindOne` - Get an edit
 <!-- End SDK Available Operations -->
 
