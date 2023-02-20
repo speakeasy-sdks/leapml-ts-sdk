@@ -25,7 +25,7 @@ export class LeapMLAPI {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "1.3.5";
+  private _sdkVersion = "1.3.6";
   private _genVersion = "1.3.3";
 
   constructor(props: SDKProps) {
