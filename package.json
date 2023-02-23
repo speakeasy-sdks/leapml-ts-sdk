@@ -1,6 +1,6 @@
 {
   "name": "@leapml/sdk",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": "leampml",
   "scripts": {
     "prepare": "tsc --build"
