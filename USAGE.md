@@ -1,8 +1,12 @@
 <!-- Start SDK Example Usage -->
 ```typescript
-import { LeapMLAPI, withSecurity} from "@leapml/sdk";
-import { ModelsControllerRemoveRequest, ModelsControllerRemoveResponse } from "@leapml/sdk/src/sdk/models/operations";
+import {
+  ModelsControllerRemoveRequest,
+  ModelsControllerRemoveResponse 
+} from "@leapml/sdk/dist/sdk/models/operations";
+
 import { AxiosError } from "axios";
+import { LeapMLAPI } from "@leapml/sdk";
 
 
 const sdk = new LeapMLAPI();
