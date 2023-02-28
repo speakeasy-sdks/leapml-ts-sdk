@@ -1,34 +1,49 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class CreateInferenceDto extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=height" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "height" })
   height?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=negativePrompt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "negativePrompt" })
   negativePrompt?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=numberOfImages" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "numberOfImages" })
   numberOfImages?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=prompt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "prompt" })
   prompt: string;
 
-  @SpeakeasyMetadata({ data: "json, name=promptStrength" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "promptStrength" })
   promptStrength?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=seed" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "restoreFaces" })
+  restoreFaces?: boolean;
+
+  @SpeakeasyMetadata()
+  @Expose({ name: "seed" })
   seed?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=steps" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "steps" })
   steps?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=version" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "version" })
   version?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=webhookUrl" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "webhookUrl" })
   webhookUrl?: string;
 
-  @SpeakeasyMetadata({ data: "json, name=width" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "width" })
   width?: number;
 }

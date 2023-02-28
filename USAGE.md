@@ -1,26 +1,28 @@
 <!-- Start SDK Example Usage -->
 ```typescript
-import { LeapMLAPI, withSecurity} from "@leapml/sdk";
-import { ModelsControllerCreateRequest, ModelsControllerCreateResponse } from "@leapml/sdk/src/sdk/models/operations";
+import {
+  ModelsControllerRemoveRequest,
+  ModelsControllerRemoveResponse 
+} from "@leapml/sdk/dist/sdk/models/operations";
+
 import { AxiosError } from "axios";
+import { LeapMLAPI } from "@leapml/sdk";
 
 
 const sdk = new LeapMLAPI();
     
-const req: ModelsControllerCreateRequest = {
+const req: ModelsControllerRemoveRequest = {
   security: {
     bearer: {
       authorization: "Bearer YOUR_BEARER_TOKEN_HERE",
     },
   },
-  request: {
-    subjectIdentifier: "unde",
-    subjectKeyword: "deserunt",
-    title: "porro",
+  pathParams: {
+    modelId: "unde",
   },
 };
 
-sdk.fineTuning.modelsControllerCreate(req).then((res: ModelsControllerCreateResponse | AxiosError) => {
+sdk.fineTuning.modelsControllerRemove(req).then((res: ModelsControllerRemoveResponse | AxiosError) => {
    // handle response
 });
 ```

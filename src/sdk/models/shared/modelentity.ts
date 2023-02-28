@@ -1,16 +1,21 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class ModelEntity extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id: string;
 
-  @SpeakeasyMetadata({ data: "json, name=subjectIdentifier" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "subjectIdentifier" })
   subjectIdentifier: string;
 
-  @SpeakeasyMetadata({ data: "json, name=subjectKeyword" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "subjectKeyword" })
   subjectKeyword: string;
 
-  @SpeakeasyMetadata({ data: "json, name=title" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "title" })
   title: string;
 }

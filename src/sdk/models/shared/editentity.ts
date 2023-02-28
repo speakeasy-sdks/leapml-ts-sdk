@@ -1,34 +1,46 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class EditEntity extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=createdAt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdAt" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   createdAt: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=editedImageUri" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "editedImageUri" })
   editedImageUri: string;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id: string;
 
-  @SpeakeasyMetadata({ data: "json, name=imageGuidanceScale" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "imageGuidanceScale" })
   imageGuidanceScale: number;
 
-  @SpeakeasyMetadata({ data: "json, name=projectId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "projectId" })
   projectId: string;
 
-  @SpeakeasyMetadata({ data: "json, name=prompt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "prompt" })
   prompt: string;
 
-  @SpeakeasyMetadata({ data: "json, name=sourceImageUri" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "sourceImageUri" })
   sourceImageUri: string;
 
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status: string;
 
-  @SpeakeasyMetadata({ data: "json, name=steps" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "steps" })
   steps: number;
 
-  @SpeakeasyMetadata({ data: "json, name=textGuidanceScale" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "textGuidanceScale" })
   textGuidanceScale: number;
 }

@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class ImageEditing {
   _defaultClient: AxiosInstance;
@@ -20,9 +22,9 @@ export class ImageEditing {
   }
   
   /**
-   * editControllerCreate - Edit a photo
+   * editControllerCreate - Edit an image
    *
-   * Edit a photo using just a prompt
+   * Edit an image using just a prompt
   **/
   editControllerCreate(
     req: operations.EditControllerCreateRequest,
@@ -66,7 +68,72 @@ export class ImageEditing {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.editEntity = httpRes?.data;
+              res.editEntity = plainToInstance(
+                shared.EditEntity,
+                httpRes?.data as shared.EditEntity,
+                { excludeExtraneousValues: true }
+              );
+            }
+            break;
+        }
+
+        return res;
+      })
+  }
+
+  
+  /**
+   * editControllerCreateWithUrl - Edit an image from URL
+   *
+   * Edit an image using just a prompt
+  **/
+  editControllerCreateWithUrl(
+    req: operations.EditControllerCreateWithUrlRequest,
+    config?: AxiosRequestConfig
+  ): Promise<operations.EditControllerCreateWithUrlResponse> {
+    if (!(req instanceof utils.SpeakeasyBase)) {
+      req = new operations.EditControllerCreateWithUrlRequest(req);
+    }
+    
+    const baseURL: string = this._serverURL;
+    const url: string = baseURL.replace(/\/$/, "") + "/api/v1/images/edit/url";
+
+    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+    try {
+      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req);
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        throw new Error(`Error serializing request body, cause: ${e.message}`);
+      }
+    }
+    
+    const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
+    
+    const headers = {...reqBodyHeaders, ...config?.headers};
+    if (reqBody == null || Object.keys(reqBody).length === 0) throw new Error("request body is required");
+    
+    const r = client.request({
+      url: url,
+      method: "post",
+      headers: headers,
+      data: reqBody, 
+      ...config,
+    });
+    
+    return r.then((httpRes: AxiosResponse) => {
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) throw new Error(`status code not found in response: ${httpRes}`);
+        const res: operations.EditControllerCreateWithUrlResponse = {statusCode: httpRes.status, contentType: contentType};
+        switch (true) {
+          case httpRes?.status == 200:
+            if (utils.matchContentType(contentType, `application/json`)) {
+              res.editEntity = plainToInstance(
+                shared.EditEntity,
+                httpRes?.data as shared.EditEntity,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -109,7 +176,11 @@ export class ImageEditing {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.editEntity = httpRes?.data;
+              res.editEntity = plainToInstance(
+                shared.EditEntity,
+                httpRes?.data as shared.EditEntity,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

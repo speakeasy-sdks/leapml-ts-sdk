@@ -1,6 +1,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { ModelEntity } from "./modelentity";
 import { WeightsEntity } from "./weightsentity";
+import { Expose, Transform, Type } from "class-transformer";
 
 export enum ModelVersionEntityStatusEnum {
     Queued = "queued",
@@ -10,18 +11,26 @@ export enum ModelVersionEntityStatusEnum {
 }
 
 export class ModelVersionEntity extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=createdAt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdAt" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   createdAt: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id: string;
 
-  @SpeakeasyMetadata({ data: "json, name=model" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "model" })
+  @Type(() => ModelEntity)
   model: ModelEntity;
 
-  @SpeakeasyMetadata({ data: "json, name=status" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "status" })
   status: ModelVersionEntityStatusEnum;
 
-  @SpeakeasyMetadata({ data: "json, name=weights" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "weights" })
+  @Type(() => WeightsEntity)
   weights: WeightsEntity;
 }

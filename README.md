@@ -25,27 +25,29 @@ Signup for [access](https://www.leapml.dev/signup) to LeapML to use the API.
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```typescript
-import { LeapMLAPI, withSecurity} from "@leapml/sdk";
-import { ModelsControllerCreateRequest, ModelsControllerCreateResponse } from "@leapml/sdk/src/sdk/models/operations";
+import {
+  ModelsControllerRemoveRequest,
+  ModelsControllerRemoveResponse 
+} from "@leapml/sdk/dist/sdk/models/operations";
+
 import { AxiosError } from "axios";
+import { LeapMLAPI } from "@leapml/sdk";
 
 
 const sdk = new LeapMLAPI();
     
-const req: ModelsControllerCreateRequest = {
+const req: ModelsControllerRemoveRequest = {
   security: {
     bearer: {
       authorization: "Bearer YOUR_BEARER_TOKEN_HERE",
     },
   },
-  request: {
-    subjectIdentifier: "unde",
-    subjectKeyword: "deserunt",
-    title: "porro",
+  pathParams: {
+    modelId: "unde",
   },
 };
 
-sdk.fineTuning.modelsControllerCreate(req).then((res: ModelsControllerCreateResponse | AxiosError) => {
+sdk.fineTuning.modelsControllerRemove(req).then((res: ModelsControllerRemoveResponse | AxiosError) => {
    // handle response
 });
 ```
@@ -57,16 +59,18 @@ sdk.fineTuning.modelsControllerCreate(req).then((res: ModelsControllerCreateResp
 
 ### fineTuning
 
-* `modelsControllerCreate` - Create Model
-* `modelsControllerFindAll` - List All Models
-* `modelsControllerFindOne` - Retrieve a Single Model
-* `modelsControllerQueue` - Queue Training Job
+* `modelsControllerRemove` - Delete a Model
 * `samplesControllerCreate` - Upload Image Samples
+* `samplesControllerCreateUrl` - Upload Image Samples Via Url
 * `samplesControllerFindAll` - List Image Samples
 * `samplesControllerFindOne` - Get Image Sample
 * `samplesControllerRemove` - Archive Image Sample
 * `versionsControllerFindAll` - List All Model Versions
 * `versionsControllerFindOne` - Get Model Version
+* `createModel` - Create Model
+* `listAllModels` - List All Models
+* `queueTrainingJob` - Queue Training Job
+* `retrieveSingleModel` - Retrieve a Single Model
 
 ### generatingImages
 
@@ -77,7 +81,8 @@ sdk.fineTuning.modelsControllerCreate(req).then((res: ModelsControllerCreateResp
 
 ### imageEditing
 
-* `editControllerCreate` - Edit a photo
+* `editControllerCreate` - Edit an image
+* `editControllerCreateWithUrl` - Edit an image from URL
 * `editControllerFindOne` - Get an edit
 <!-- End SDK Available Operations -->
 

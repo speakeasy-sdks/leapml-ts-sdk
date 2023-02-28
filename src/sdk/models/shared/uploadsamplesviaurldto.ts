@@ -2,8 +2,8 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 
-export class TrainModelDto extends SpeakeasyBase {
+export class UploadSamplesViaUrlDto extends SpeakeasyBase {
   @SpeakeasyMetadata()
-  @Expose({ name: "webhookUrl" })
-  webhookUrl?: string;
+  @Expose({ name: "images" })
+  images: string[];
 }
