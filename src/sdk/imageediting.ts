@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class ImageEditing {
   _defaultClient: AxiosInstance;
@@ -66,7 +68,11 @@ export class ImageEditing {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.editEntity = httpRes?.data;
+              res.editEntity = plainToInstance(
+                shared.EditEntity,
+                httpRes?.data as shared.EditEntity,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -123,7 +129,11 @@ export class ImageEditing {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.editEntity = httpRes?.data;
+              res.editEntity = plainToInstance(
+                shared.EditEntity,
+                httpRes?.data as shared.EditEntity,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -166,7 +176,11 @@ export class ImageEditing {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.editEntity = httpRes?.data;
+              res.editEntity = plainToInstance(
+                shared.EditEntity,
+                httpRes?.data as shared.EditEntity,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

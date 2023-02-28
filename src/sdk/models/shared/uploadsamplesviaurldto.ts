@@ -1,7 +1,9 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose } from "class-transformer";
 
 
 export class UploadSamplesViaUrlDto extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=images" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "images" })
   images: string[];
 }

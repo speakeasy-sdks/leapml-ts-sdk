@@ -2,6 +2,7 @@ src/sdk/finetuning.ts
 src/sdk/generatingimages.ts
 src/sdk/imageediting.ts
 src/sdk/sdk.ts
+jest.config.js
 package-lock.json
 package.json
 src/index.ts

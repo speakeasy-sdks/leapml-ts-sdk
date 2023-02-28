@@ -1,6 +1,8 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse, ParamsSerializerOptions } from "axios";
+import * as shared from "./models/shared";
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { plainToInstance } from "class-transformer";
 
 export class FineTuning {
   _defaultClient: AxiosInstance;
@@ -104,7 +106,11 @@ export class FineTuning {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.trainingSampleEntity = httpRes?.data;
+              res.trainingSampleEntity = plainToInstance(
+                shared.TrainingSampleEntity,
+                httpRes?.data as shared.TrainingSampleEntity,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -143,22 +149,15 @@ export class FineTuning {
     const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
     const headers = {...reqBodyHeaders, ...config?.headers};
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     if (reqBody == null || Object.keys(reqBody).length === 0) throw new Error("request body is required");
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "post",
       headers: headers,
       data: reqBody, 
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -169,7 +168,11 @@ export class FineTuning {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.trainingSampleEntity = httpRes?.data;
+              res.trainingSampleEntity = plainToInstance(
+                shared.TrainingSampleEntity,
+                httpRes?.data as shared.TrainingSampleEntity,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -212,7 +215,11 @@ export class FineTuning {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.trainingSampleEntities = httpRes?.data;
+              res.trainingSampleEntities = plainToInstance(
+                ,
+                httpRes?.data as ,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -255,7 +262,11 @@ export class FineTuning {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.trainingSampleEntities = httpRes?.data;
+              res.trainingSampleEntities = plainToInstance(
+                ,
+                httpRes?.data as ,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -298,7 +309,11 @@ export class FineTuning {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.trainingSampleEntity = httpRes?.data;
+              res.trainingSampleEntity = plainToInstance(
+                shared.TrainingSampleEntity,
+                httpRes?.data as shared.TrainingSampleEntity,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -341,7 +356,11 @@ export class FineTuning {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.modelVersionEntities = httpRes?.data;
+              res.modelVersionEntities = plainToInstance(
+                ,
+                httpRes?.data as ,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -384,7 +403,11 @@ export class FineTuning {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.modelVersionEntity = httpRes?.data;
+              res.modelVersionEntity = plainToInstance(
+                shared.ModelVersionEntity,
+                httpRes?.data as shared.ModelVersionEntity,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -441,7 +464,11 @@ export class FineTuning {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.modelEntity = httpRes?.data;
+              res.modelEntity = plainToInstance(
+                shared.ModelEntity,
+                httpRes?.data as shared.ModelEntity,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -469,19 +496,12 @@ export class FineTuning {
     
     const client: AxiosInstance = utils.createSecurityClient(this._defaultClient!, req.security)!;
     
-    const qpSerializer: ParamsSerializerOptions = utils.getQueryParamSerializer(req.queryParams);
-
-    const requestConfig: AxiosRequestConfig = {
-      ...config,
-      params: req.queryParams,
-      paramsSerializer: qpSerializer,
-    };
-    
+    const queryParams: string = utils.serializeQueryParams(req.queryParams);
     
     const r = client.request({
-      url: url,
+      url: url + queryParams,
       method: "get",
-      ...requestConfig,
+      ...config,
     });
     
     return r.then((httpRes: AxiosResponse) => {
@@ -492,7 +512,11 @@ export class FineTuning {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.modelEntities = httpRes?.data;
+              res.modelEntities = plainToInstance(
+                ,
+                httpRes?.data as ,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -552,7 +576,11 @@ export class FineTuning {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.modelVersionEntity = httpRes?.data;
+              res.modelVersionEntity = plainToInstance(
+                shared.ModelVersionEntity,
+                httpRes?.data as shared.ModelVersionEntity,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }
@@ -595,7 +623,11 @@ export class FineTuning {
         switch (true) {
           case httpRes?.status == 200:
             if (utils.matchContentType(contentType, `application/json`)) {
-                res.modelEntity = httpRes?.data;
+              res.modelEntity = plainToInstance(
+                shared.ModelEntity,
+                httpRes?.data as shared.ModelEntity,
+                { excludeExtraneousValues: true }
+              );
             }
             break;
         }

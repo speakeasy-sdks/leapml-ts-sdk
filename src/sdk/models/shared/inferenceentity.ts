@@ -1,43 +1,58 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Expose, Transform } from "class-transformer";
 
 
 export class InferenceEntity extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=createdAt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "createdAt" })
+  @Transform(({ value }) => new Date(value), { toClassOnly: true })
   createdAt: Date;
 
-  @SpeakeasyMetadata({ data: "json, name=height" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "height" })
   height: number;
 
-  @SpeakeasyMetadata({ data: "json, name=id" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "id" })
   id: string;
 
-  @SpeakeasyMetadata({ data: "json, name=images" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "images" })
   images: string[];
 
-  @SpeakeasyMetadata({ data: "json, name=modelId" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "modelId" })
   modelId: string[];
 
-  @SpeakeasyMetadata({ data: "json, name=negativePrompt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "negativePrompt" })
   negativePrompt: string;
 
-  @SpeakeasyMetadata({ data: "json, name=numberOfImages" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "numberOfImages" })
   numberOfImages: number;
 
-  @SpeakeasyMetadata({ data: "json, name=prompt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "prompt" })
   prompt: string;
 
-  @SpeakeasyMetadata({ data: "json, name=promptStrength" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "promptStrength" })
   promptStrength: number;
 
-  @SpeakeasyMetadata({ data: "json, name=seed" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "seed" })
   seed: number;
 
-  @SpeakeasyMetadata({ data: "json, name=state" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "state" })
   state: number;
 
-  @SpeakeasyMetadata({ data: "json, name=steps" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "steps" })
   steps: number;
 
-  @SpeakeasyMetadata({ data: "json, name=width" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "width" })
   width: number;
 }

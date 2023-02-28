@@ -1,27 +1,35 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
+import { Expose, Type } from "class-transformer";
 
 
 export class EditControllerCreateWithUrlRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "json, name=imageGuidanceScale" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "imageGuidanceScale" })
   imageGuidanceScale?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=imageUrl" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "imageUrl" })
   imageUrl: string;
 
-  @SpeakeasyMetadata({ data: "json, name=prompt" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "prompt" })
   prompt: string;
 
-  @SpeakeasyMetadata({ data: "json, name=seed" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "seed" })
   seed?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=steps" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "steps" })
   steps?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=textGuidanceScale" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "textGuidanceScale" })
   textGuidanceScale?: number;
 
-  @SpeakeasyMetadata({ data: "json, name=webhookUrl" })
+  @SpeakeasyMetadata()
+  @Expose({ name: "webhookUrl" })
   webhookUrl?: string;
 }
 
